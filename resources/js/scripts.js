@@ -43,4 +43,28 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+
+    
+
+    $('#searchForm').submit(function(event) {
+        event.preventDefault();
+
+        const recogida = document.getElementById("recogida")
+        const val_recogida = recogida.value
+        const entrega = document.getElementById("entrega")
+        const val_entrega = entrega.value
+        const num_price = document.getElementById("num-price")
+        const val_num = num_price.value
+        console.log(val_recogida, val_entrega, val_num);
+
+        $('#modalf').modal('show')
+
+        recogida.value = ""
+        entrega.value = ""
+        num_price.value = ""
+
+
+
+    });
+
 });

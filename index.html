@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="resources/css/styles.css" rel="stylesheet" />
+        <link href="resources/css/index.css" rel="stylesheet" />
     </head>
     <body id="page-top">
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -33,7 +34,7 @@
             <div class="container d-flex align-items-center flex-column pb-5">
                 <img class="img-fluid" src="assets/trabajos/logo.png" alt="..." style="width: 10rem;"/>
                 <h1 class="big text-uppercase mb-1">¿A dónde llevamos sus muebles?</h1>
-                <div class="card col-lg-8 col-md-9 col-xl-6 col-sm-10 mt-5" style="height: 15rem;" id="searcher">
+                <div class="card col-lg-8 col-md-9 col-xl-6 col-sm-10 mt-5" style="height: 22rem;" id="searcher">
                   <img class="card-img-top"alt="">
                   <div class="card-body">
                     <div class="row w-auto justify-content-center">
@@ -42,19 +43,40 @@
                                 <div class="d-flex justify-content-around">
                                     <div class="d-flex flex-column justify-content-center">
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                            <label for="name">Lugar de recogida</label>
+                                            <input class="form-control" id="recogida" type="text" placeholder="Enter your name..." required />
+                                            <label for="name">Ciudad de recogida</label>
                                             <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere de un lugar de salida</div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                            <label for="name">Lugar de entrega</label>
+                                            <input class="form-control" id="entrega" type="text" placeholder="Enter your name..." required />
+                                            <label for="name">Ciudad de entrega</label>
                                             <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere de un lugar de salida</div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="num-price" type="number" placeholder="Enter your phone..." required />
+                                            <label for="name">Número de telefono</label>
+                                            <div class="invalid-feedback" data-sb-feedback="name:required">Se requiere de un número</div>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <a class="btn btn-primary btn-sm " href="#" role="button">Buscar</a>
+                                        <button class="btn btn-primary btn-mg" id="get-price" type="">Obtener presupuesto</a>
                                     </div>
+
+                                    <div id="modalf" class="modal" tabindex="-1">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body" style="color: gray;">
+                                              <p>Petición de presupuesto enviada correctamente</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
                                 </div>
                             </form>
                         </div>
@@ -108,13 +130,26 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto autem consequatur incidunt est vitae, quae ullam assumenda accusamus vel nesciunt alias nobis natus doloremque voluptate molestias dolore. Officia, dolorem doloribus!</p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nisi assumenda voluptatem sint, odio laborum iure veritatis praesentium perspiciatis quisquam quam blanditiis, quas porro deleniti quo tenetur laboriosam alias suscipit?</p></div>
+                    <div class="col-lg-4 ms-auto">
+                        <p class="lead">
+                        Hemar es una empresa familiar de mudanzas donde la satisfacción de nuestros clientes es nuestra prioridad.
+                        La calidad de nuestro de servicio es clave para que la experiencia de mudarse sea lo más cómoda y agradable posible.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 me-auto">
+                        <p class="lead">
+                        Nos gusta lo que hacemos y siempre estamos dispuestos a facilitar la mudanza de nuestros clientes, teniendo siempre en cuenta las necesidades
+                        de nuestros clientes para que sus muebles tengan el mejor trato durante el transporte.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
         <section class="page-section" id="contact">
             <div class="container">
+                <p class="lead" style="color: gray; text-align: center;">
+                    Para cualquier consulta que tenga, por favor, rellene el siguiente formulario
+                </p><br/>
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contacto</h2>
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -125,32 +160,26 @@
                     <div class="col-lg-8 col-xl-7">
                         <form id="contactForm">
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Introduce tu nombre..." data-sb-validations="required" />
+                                <input class="form-control" id="name" type="text" placeholder="Introduce tu nombre..." required />
                                 <label for="name">Nombre completo</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">Es necesario un nombre</div>
+                                <div class="invalid-feedback" >Es necesario un nombre</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" required />
+                                <label for="email">Dirección de correo electrónico</label>
+                                <div class="invalid-feedback" >An email is required.</div>
+                                <div class="invalid-feedback" >Email is not valid.</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="tel" placeholder="xxxxxxxxx" data-sb-validations="required" />
+                                <input class="form-control" id="phone" type="number" placeholder="xxxxxxxxx" required />
                                 <label for="phone">Número de teléfono</label>
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">Es necesario un número</div>
+                                <div class="invalid-feedback">Es necesario un número</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <textarea class="form-control" id="message" type="text" placeholder="Introduce tu mensaje..." style="height: 10rem" required></textarea>
                                 <label for="message">Mensaje</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">Es necesario un mensaje</div>
+                                <div class="invalid-feedback" >Es necesario un mensaje</div>
                             </div>
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Formulario enviado</div>
-                                </div>
-                            </div>
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error al enviar el mensaje</div></div>
                             <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Enviar</button>
                         </form>
                     </div>
@@ -160,22 +189,24 @@
         <footer class="footer text-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Localización</h4>
                         <p class="lead mb-0">
-                            Calle de Mercé Rododera
+                            <iframe class="w-100 p-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.968762028425!2d-3.6148519845343663!3d40.56436707934816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422d24bf5b06bb%3A0x462b694952706c49!2sC.%20Merc%C3%A9%20Rodoreda%2C%202%2C%2028702%20San%20Sebasti%C3%A1n%20de%20los%20Reyes%2C%20Madrid!5e0!3m2!1ses!2ses!4v1641331222211!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            Calle de Mercé Rododera 2
                             <br />
                             28705
                         </p>
                     </div>
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Redes sociales</h4>
-                    </div>
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">Sobre Hemar Mudanzas</h4>
-                        <p class="lead mb-0">
-                            Hemar es una empresa de Mudanzas
-                        </p>
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                <img class="call-icon" src="assets/icons/call-min.png"/>
+                                <br>
+                                <p>Contactar ahora</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -198,11 +229,9 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <img class="img-fluid rounded mb-5" src="assets/trabajos/salon.jpeg" alt="..." />
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4">
+                                        Entrega y distribución de muebles de acuerdo a las peticiones del cliente.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -225,11 +254,9 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <img class="img-fluid rounded mb-5" src="assets/trabajos/sofa.jpeg" alt="..." />
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4">
+                                        Entrega y acomodamiento de un mueble de tipo de sofa.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -252,11 +279,9 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <img class="img-fluid rounded mb-5" src="assets/trabajos/tele.jpeg" alt="..." />
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4">
+                                        Entrega y distribución de muebles de acuerdo a las peticiones del cliente.  
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -265,6 +290,7 @@
             </div>
         </div>
         <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="resources/js/jquery-3.6.0.min.js"></script>
         <script src="resources/js/scripts.js"></script>
     </body>
 </html>
