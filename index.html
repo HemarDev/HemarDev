@@ -303,13 +303,12 @@
         </div>
         <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="resources/js/jquery-3.6.0.min.js"></script>
-        <script src="resources/js/initFire.js" type="module"></script>
+        <script type="module" src="resources/js/initFire.js">
+        </script>
         <script type="module">
-
+            import { getDatabase, ref, set, push, child } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
             $( document ).ready(function() {
                 $('#searchForm').submit(function(event) {
-                    
-                    import { getDatabase, ref, set, push, child } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
                     event.preventDefault();
 
                     const recogida = document.getElementById("recogida")
