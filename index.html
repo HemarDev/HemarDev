@@ -166,28 +166,28 @@
                     <div class="col-lg-8 col-xl-7">
                         <form id="contactForm">
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Introduce tu nombre..." required />
+                                <input class="form-control" id="contact_name" type="text" placeholder="Introduce tu nombre..." required />
                                 <label for="name">Nombre completo</label>
                                 <div class="invalid-feedback" >Es necesario un nombre</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" required />
+                                <input class="form-control" id="contact_email" type="email" placeholder="name@example.com" required />
                                 <label for="email">Dirección de correo electrónico</label>
                                 <div class="invalid-feedback" >An email is required.</div>
                                 <div class="invalid-feedback" >Email is not valid.</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="phone" type="number" placeholder="xxxxxxxxx" required />
+                                <input class="form-control" id="contact_phone" type="number" placeholder="xxxxxxxxx" required />
                                 <label for="phone">Número de teléfono</label>
                                 <div class="invalid-feedback">Es necesario un número</div>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Introduce tu mensaje..." style="height: 10rem" required></textarea>
+                                <textarea class="form-control" id="contact_message" type="text" placeholder="Introduce tu mensaje..." style="height: 10rem" required></textarea>
                                 <label for="message">Mensaje</label>
                                 <div class="invalid-feedback" >Es necesario un mensaje</div>
                             </div>
                             <div class="d-flex justify-content-start" style="margin-top: 10px;">
-                                <input class="form-check-input" id="" type="checkbox" placeholder="Accept terms" required />
+                                <input class="form-check-input" id="contact_accept_terms" type="checkbox" placeholder="Accept terms" required />
                                 <p style="color: gray; margin-left: 5px;">
                                     Acepto el tratamiento de datos
                                 </p>
@@ -216,7 +216,7 @@
                             <div>
                                 <img class="call-icon" src="assets/icons/call-min.png"/>
                                 <br>
-                                <p>Llamar ahora</p>
+                                <p>Llamar ahora 6912462XX</p>
                             </div>
                         </div>
                     </div>
@@ -304,6 +304,7 @@
         <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="resources/js/jquery-3.6.0.min.js"></script>
         <script type="module" src="resources/js/initFire.js">
+        // <script type="module">
         </script>
         <script type="module">
             import { getDatabase, ref, set, push, child } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
@@ -337,6 +338,44 @@
                     num_price.value = ""
                     accept_terms.checked = false
                 });
+
+
+
+                $('#contactForm').submit(function(event) {
+                    event.preventDefault();
+
+                    const contact_name = document.getElementById("contact_name")
+                    const val_name = contact_name.value
+                    const contact_mail = document.getElementById("contact_email")
+                    const val_mail = contact_mail.value
+                    const contact_phone = document.getElementById("contact_phone")
+                    const val_phone = contact_phone.value
+                    const contact_message = document.getElementById("contact_message")
+                    const val_contact_message = contact_message.value
+                    const contact_accept_terms = document.getElementById("contact_accept_terms")
+                    const val_accept_terms = contact_accept_terms.checked
+
+
+                    const database = getDatabase();
+
+                    const newQq = push(child(ref(database), 'contact-form')).key;
+                        
+                    set(ref(database, 'contact-form/' + newQq), {
+                        name: val_name,
+                        mail: val_mail,
+                        phone: val_phone,
+                        message: val_contact_message
+                    });
+
+                    $('#modalf').modal('show');
+
+                    contact_name.value = ""
+                    contact_mail.value = ""
+                    contact_phone.value = ""
+                    contact_message.value = ""
+                    contact_accept_terms.checked = false
+
+                })
             });
         </script>
         <script src="resources/js/scripts.js"></script>
